@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary: #0AEDDB;
+  --color-secondary: #25413d;
+  --color-bg: #0F2421;
+  --color-placeholder: #8ca39a;
   --font-sans: 'Space Grotesk', sans-serif;
+}
+
+body {
+  @apply bg-[#132623] text-white;
+}
+
+@layer base {
+  .input {
+    @apply w-full bg-secondary rounded-xl p-4 text-base placeholder:text-placeholder focus:outline-none focus:ring-2 focus:ring-primary;
+  }
 }

@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ExampleCodeBlock from "../components/ExampleCodeBlock";
+---
+
+<Layout>
+  <div class="min-h-screen px-8 py-10">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-8">Brainfuck Examples</h1>
+
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-bold mb-4">Simple Examples</h2>
+
+          <div class="flex flex-col gap-6">
+            <ExampleCodeBlock
+              client:load
+              code="+++++++++++++++++++++++++++++++++++++++++++++++++++++."
+              title="Counter"
+              description="Outputs the digit '5' (ASCII 53)."
+              output="5"
+            />
+
+            <ExampleCodeBlock
+              client:load
+              code=",."
+              title="Echo"
+              description="Reads one character and outputs it."
+              input="Any visible character"
+              output="Same character"
+              actualInput="A"
+            />
+
+            <ExampleCodeBlock
+              client:load
+              code=",>,[<+>-]<."
+              title="Move Value"
+              description="Moves a value from one cell to another. Input two visible characters, outputs their sum as a character. For example, input '1' and '2' (ASCII 49 and 50) will output 'c' (ASCII 99)."
+              input="Two visible characters (e.g., 1 and 2)"
+              output="Sum as visible character (e.g., 'c')"
+              actualInput="12"
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4">Intermediate Examples</h2>
+
+          <div class="flex flex-col gap-6">
+            <ExampleCodeBlock
+              client:load
+              code="++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>."
+              title="Hello World"
+              description="The classic 'Hello World!' program."
+              output="Hello World!"
+            />
+
+            <ExampleCodeBlock
+              client:load
+              code=",>,<[>[>+>+<<-]>>[<<+>>-]<<<-]>>."
+              title="Multiplication"
+              description="Multiplies two single-digit numbers. Input two digits (e.g., '3' and '4'), outputs their product as a character (e.g., 'L' for 3*4=12+48=60, ASCII 60 is '<')."
+              input="Two digits (e.g., 3 and 4)"
+              output="Product as visible character (e.g., '<')"
+              actualInput="34"
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4">Advanced Examples</h2>
+
+          <div class="flex flex-col gap-6">
+            <ExampleCodeBlock
+              client:load
+              code=",[.[-]+,]"
+              title="Truth Machine"
+              description="If input is '0', outputs '0'. If input is '1', outputs infinite '1's. (Input must be the digit '0' or '1')"
+              input="0 or 1 (as digit)"
+              output="0 or infinite 1s"
+              actualInput="1"
+            />
+
+            <ExampleCodeBlock
+              client:load
+              code=",[>+>+<<-]>>[<<+>>-]<<"
+              title="Cell Copy"
+              description="Copies a value to multiple cells. Input a visible character, result is value copied to next cell."
+              input="One visible character (e.g., 'A')"
+              output="Value copied to next cell"
+              actualInput="A"
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4">How to Use These Examples</h2>
+          <div class="bg-[#1a2e2a] rounded-2xl p-6">
+            <ol class="list-decimal list-inside space-y-2 text-[#b2cfc7]">
+              <li>Click "Copy" to copy the code to your clipboard</li>
+              <li>
+                Click "Try it out" to load the example directly into the
+                interpreter
+              </li>
+              <li>Add any required input in the input field</li>
+              <li>Click "Run" to execute or "Step" to step through</li>
+              <li>Try modifying the code to see what happens!</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
