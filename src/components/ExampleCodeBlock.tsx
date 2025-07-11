@@ -33,7 +33,7 @@ export default function ExampleCodeBlock({
     // Store the code in localStorage so the main page can access it
     localStorage.setItem('brainfuck-example-code', code);
     localStorage.setItem('brainfuck-example-input', actualInput || input);
-    window.location.href = '/';
+    window.location.href = '/unfuck';
   };
 
   return (
