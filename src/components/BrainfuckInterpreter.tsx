@@ -18,8 +18,8 @@ export default function BrainfuckInterpreter() {
       }
 
       const result = brainfuckInterpret(code, input);
-      setOutput(result);
-      resetMemoryState();
+      setOutput(result.output);
+      setMemoryState(result.memoryState);
     } catch (error) {
       alert('Error: ' + (error as Error).message);
     }

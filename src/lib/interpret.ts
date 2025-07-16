@@ -1,18 +1,15 @@
-export function brainfuckInterpret(code: string, inputData: string = ""): string {
+export function brainfuckInterpret(code: string, inputData: string = ""): { output: string; memoryState: MemoryState } {
   // Uses 30,000 memory cells, initialized to 0
   const data = new Uint8Array(30000);
   let dataPtr = 0;
-
   let codePtr = 0;
   const output: string[] = [];
-
   const inputList = inputData.split('').map(char => char.charCodeAt(0));
   let inputPtr = 0;
 
   // Main interpretation loop
   while (codePtr < code.length) {
     const command = code[codePtr];
-
     switch (command) {
       case '>':
         dataPtr++;
@@ -80,7 +77,17 @@ export function brainfuckInterpret(code: string, inputData: string = ""): string
     codePtr++;
   }
 
-  return output.join('');
+  // Return both output and memory state
+  return {
+    output: output.join(''),
+    memoryState: {
+      data,
+      dataPtr,
+      codePtr,
+      inputPtr,
+      output: output.join('')
+    }
+  };
 }
 
 export interface MemoryState {
